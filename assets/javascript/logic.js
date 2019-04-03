@@ -36,10 +36,12 @@ $(".sports-btn").on("click", function () {
                     var rating = results[i].rating;
                     var p = $("<p>").text("Rating: " + rating);
                     var sportGif = $("<img>");
-                    sportGif.attr("src", results[i].images.fixed_height.url);
                     gifDiv.append(p);
+                    sportGif.attr("src", results[i].images.fixed_height_still.url);
                     sportGif.attr("data-state", "still")
-                    gifDiv.append(sportGif);
+                    sportGif.attr("data-animate", results[i].images.fixed_height.url)
+                    sportGif.attr("data-still", results[i].images.fixed_height_still.url)
+                    gifDiv.append(sportGif);    
                     $(".gifArea").prepend(gifDiv);
                     sportGif.on("click", function(){
                         console.log($(this))
