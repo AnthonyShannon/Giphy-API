@@ -1,5 +1,4 @@
 var sportsArray = ["Football", "Soccer", "Baseball", "Gymnastics", "Brazillian Jiu Jitsu", "Mixed Martial Arts"]
-
 function createButtons() {
     $("#sportsButtons").empty();
     for (var i = 0; i < sportsArray.length; i++) {
@@ -18,7 +17,6 @@ $("#addBtn").on("click", function (event) {
     sportsArray.push(sports);
     createButtons();
 })
-
 $(document).on("click", ".sports-btn", function () {
     var sportSelection = $(this).text()
     console.log(sportSelection);
@@ -36,32 +34,27 @@ $(document).on("click", ".sports-btn", function () {
                     var rating = results[i].rating;
                     var p = $("<p>").text("Rating: " + rating);
                     var sportGif = $("<img>");
-
-                    // review this section
                     gifDiv.append(p);
                     sportGif.attr("src", results[i].images.fixed_height_still.url);
                     sportGif.attr("data-state", "still")
                     sportGif.attr("data-animate", results[i].images.fixed_height.url)
                     sportGif.attr("data-still", results[i].images.fixed_height_still.url)
                     gifDiv.append(sportGif);
-                    // to here
                     $(".gifArea").prepend(gifDiv);
-                    sportGif.on("click", function(){
+                    sportGif.on("click", function () {
                         console.log($(this))
                         var state = $(this).attr("data-state");
                         if (state === "still") {
                             $(this).attr("src", $(this).attr("data-animate"));
                             $(this).attr("data-state", "animate");
                             console.log($(this))
-                          } else {
+                        } else {
                             $(this).attr("src", $(this).attr("data-still"));
                             $(this).attr("data-state", "still");
-                          }
-                        
+                        }
                     })
 
                 }
             }
         })
 })
-
