@@ -20,7 +20,7 @@ $("#addBtn").on("click", function (event) {
 $(document).on("click", ".sports-btn", function () {
     var sportSelection = $(this).text()
     console.log(sportSelection);
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + sportSelection + "&api_key=dc6zaTOxFJmzC&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + sportSelection + "&api_key=Fgg8ClXq3nz58jnnyVqjoZvbeN0XD3Gn";
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -34,12 +34,15 @@ $(document).on("click", ".sports-btn", function () {
                     var rating = results[i].rating;
                     var p = $("<p>").text("Rating: " + rating);
                     var sportGif = $("<img>");
+
+                    // review this section
                     gifDiv.append(p);
                     sportGif.attr("src", results[i].images.fixed_height_still.url);
                     sportGif.attr("data-state", "still")
                     sportGif.attr("data-animate", results[i].images.fixed_height.url)
                     sportGif.attr("data-still", results[i].images.fixed_height_still.url)
                     gifDiv.append(sportGif);
+                    // to here
                     $(".gifArea").prepend(gifDiv);
                     sportGif.on("click", function () {
                         console.log($(this))
